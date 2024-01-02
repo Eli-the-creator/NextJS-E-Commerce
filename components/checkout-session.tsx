@@ -11,6 +11,10 @@ interface Props {
 
 export function CheckoutSession({ customerDitail }: Props) {
   const { clearCart } = useShoppingCart();
+  useEffect(() => {
+    clearCart();
+  }, [customerDitail, clearCart]);
+
   if (!customerDitail) {
     return (
       <>
@@ -21,10 +25,6 @@ export function CheckoutSession({ customerDitail }: Props) {
       </>
     );
   }
-
-  useEffect(() => {
-    clearCart();
-  }, [customerDitail]);
 
   return (
     <>
